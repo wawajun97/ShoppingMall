@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="displayProduct" method = "post">
+    <table border="1">
+        <thead>
+            <tr>
+                <td>상품명</td>
+                <td>가격</td>
+                <td>카테고리</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${productList}">
+                <td><a href = "product/{name}" th:text="${product.productName}"></a></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.category}"></td>
+                <td> <input type="checkbox" name="basket" th:value = "${product.productName}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <button id="submit">장바구니에 추가</button>
+    </form>
+</body>
+</html>

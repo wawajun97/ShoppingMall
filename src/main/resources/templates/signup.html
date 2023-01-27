@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>회원가입 페이지</title>
+
+    <link href="signup.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="wrapper">
+    <form  method="post">
+        <div class="title"><h1 style="font-size: 21px;">회원가입</h1></div>
+        <div class="id">
+            <input id="Id" name ="memberId"  type="text" placeholder="아이디를 입력해 주세요.">
+            <div id="nameError" class="error"></div>
+        </div>
+        <div class="pw">
+            <input id="password" name = "pw" type="password" placeholder="비밀번호를 입력해 주세요.">
+            <div id="passwordError" class="error"></div>
+        </div>
+            <hr>
+        <div class="signUp">
+            <input type="submit" onclick="location.href='login'" value="회원가입">
+        </div>  
+    </form>
+    </div>
+</body>
+
+</html>

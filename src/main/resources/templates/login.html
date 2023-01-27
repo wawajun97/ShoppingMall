@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>제목</title>
+</head>
+<style>
+ul { list-style:none;}
+li { line-height:50px;}
+label {
+	width:75px;	
+	float:left;
+	margin: 0px 20px;
+}
+</style>
+<body>
+	<label>&nbsp;</label><h1>환영합니다!!!</h1>
+	<form action="#" method="post">
+		<ul>
+			<li>
+				<label for="user-id">ID</label>
+				<input type="text" name="memberId" id="memberId" required placeholder="아이디 입력...">
+			</li>
+			<li>
+				<label for="user-pw">PASSWORD</label>
+				<input type="password" name="pw" id="pw" required placeholder="비밀번호 입력...">
+			</li>
+			<li>
+				<label>&nbsp;</label>
+				<input type="submit" value="로그인">
+			</li>	
+			<li>
+				<label>&nbsp;</label>
+				<button type = "button" onclick="location.href='signup'" value="회원가입">회원가입</button >
+			</li>
+		</ul>
+	</form>
+</body>
+</html>
