@@ -27,18 +27,8 @@ public class ProductController {
 	
 	@PostMapping("searchProduct")
 	public String displayProduct(@RequestParam("checkInfo") String radioButton, @RequestParam("search") String search, Model model){
-		if(radioButton.equals("물건")) { //다른 방법 궁금
-			List<Product> product = productservice.searchOne(search);
-			model.addAttribute("productList", product);
-		}
-		else if(radioButton.equals("카테고리")){
-			List<Product> product = productservice.searchCategory(search);
-			model.addAttribute("productList", product);
-		}
-		else {
-			List<Product> product = productservice.searchAll();
-			model.addAttribute("productList", product);
-		}
+		List<Product> product = productservice.selectRadioButton(radioButton, search);
+		model.addAttribute("productList", product);
 		return "displayProduct";
 	}
 }

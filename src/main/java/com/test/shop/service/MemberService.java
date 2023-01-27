@@ -18,8 +18,14 @@ public class MemberService {
 		return member.getMemberId();
 	}
 	
-	public Optional<Member> logIn(Member member) {
-		return memberRepository.logIn(member.getMemberId(), member.getPw());
+	public String logIn(Member member) {
+		Optional<Member> result = memberRepository.logIn(member.getMemberId(), member.getPw());
+		if(result.equals(Optional.empty())) {
+			return "login";
+		}
+		else {
+			return "redirect:searchProduct";
+		}
 	}
 	
 	public String getLoginId() {

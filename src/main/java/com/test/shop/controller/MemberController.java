@@ -8,13 +8,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.test.shop.domain.Member;
 import com.test.shop.service.MemberService;
 
+
 @Controller
-public class SignUpController {
-	
+public class MemberController {
+
 	private final MemberService memberservice;
 	
-	public SignUpController(MemberService memberservice) {
+	public MemberController(MemberService memberservice) {
 		this.memberservice = memberservice;
+	}
+	
+	@GetMapping("login")
+	public String login() {
+		return "login";
+	}
+	
+	@PostMapping("login")
+	public String login(@RequestParam("memberId") String id, @RequestParam("pw") String pw) {
+		Member member = new Member();
+		member.setMemberId(id);
+		member.setPw(pw);
+		
+		return memberservice.logIn(member);		
 	}
 	
 	@GetMapping("signup")
@@ -23,7 +38,8 @@ public class SignUpController {
 	}
 	
 	@PostMapping("signup")
-	public String PostSignUp(@RequestParam("memberId") String id, @RequestParam("pw") String pw, Member member) {
+	public String PostSignUp(@RequestParam("memberId") String id, @RequestParam("pw") String pw) {
+		Member member = new Member();
 		member.setMemberId(id);
 		member.setPw(pw);
 		

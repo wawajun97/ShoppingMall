@@ -39,16 +39,15 @@ public class JdbcMemberRepository implements MemberRepository {
 	}
 	
 	@Override
-	public Member memberSave(Member member) {
+	public int memberSave(Member member) {
 		String sql = "insert into member (memberId, pw) values(?,?)";
-		jdbcTemplate.update(sql, new Object[] {member.getMemberId(),member.getPw()});
-		return member;
+		return jdbcTemplate.update(sql, new Object[] {member.getMemberId(),member.getPw()});
 	}
 	
 	@Override
 	public Optional<Member> findById(String id) {
 		List<Member> result = jdbcTemplate.query("select * from member where memberId = ?", memberRowMapper(), id);
-				 return result.stream().findAny();
+		return result.stream().findAny();
 	}
 
 	private RowMapper<Member> memberRowMapper() { //객체 자체를 반환

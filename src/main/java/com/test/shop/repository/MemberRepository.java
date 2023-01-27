@@ -6,7 +6,7 @@ import com.test.shop.domain.Member;
 
 public interface MemberRepository {
 	Optional<Member> logIn(String id, String pw);
-	Member memberSave(Member member);
+	int memberSave(Member member);
 	String getLoginId();
 	Optional<Member> findById(String id);
 }

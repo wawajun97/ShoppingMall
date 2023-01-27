@@ -26,12 +26,8 @@ private final BasketService basketservice;
 	}
 	
 	@PostMapping("displayProduct")
-	public String insertBasket(@RequestParam("basket") List<String> productName, Basket basket) {
-		for(int i = 0;i<productName.size();i++) {
-			basket.setProductName(productName.get(i));
-			basketservice.insertBasket(basket);
-		}
-		
+	public String insertBasket(@RequestParam("basket") List<String> productName) {
+		basketservice.insertBasket(productName);
 		return "redirect:searchProduct";
 	}
 	
@@ -43,10 +39,8 @@ private final BasketService basketservice;
 	}
 	
 	@PostMapping("myBasket")
-	public String deleteBasket(@RequestParam("basket") List<String> productName, Basket basket) {
-		for(int i = 0;i<productName.size();i++) {
-			basketservice.deleteProductInBasket(productName.get(i));
-		}
+	public String deleteBasket(@RequestParam("basket") List<String> productName) {
+		basketservice.deleteProductInBasket(productName);
 		return "redirect:searchProduct";
 	}
 }

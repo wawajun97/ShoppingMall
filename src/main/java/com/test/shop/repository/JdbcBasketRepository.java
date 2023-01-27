@@ -18,10 +18,9 @@ public class JdbcBasketRepository implements BasketRepository {
 	}
 	
 	@Override
-	public Basket insertBasket(Basket basket) { //굳이 return을 해줘야 하는지??
+	public int insertBasket(Basket basket) {
 		String sql = "insert into basket (memberId, productName) values(?,?)";
-		jdbcTemplate.update(sql, new Object[] {basket.getMemberId(),basket.getProductName()});
-		return basket;
+		return jdbcTemplate.update(sql, new Object[] {basket.getMemberId(),basket.getProductName()});
 	}
 
 	@Override
@@ -31,8 +30,8 @@ public class JdbcBasketRepository implements BasketRepository {
 	}
 	
 	@Override
-	public void deleteProductInBasket(String id, String productName) { 
-		jdbcTemplate.update("delete from basket where memberId = ? and productName = ?",  id, productName);
+	public int deleteProductInBasket(String id, String productName) { 
+		return jdbcTemplate.update("delete from basket where memberId = ? and productName = ?",  id, productName);
 	}
 	
 	private RowMapper<Basket> BasketRowMapper() {

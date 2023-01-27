@@ -54,10 +54,5 @@ public class SpringConfig {
 	public BasketRepository basketRepository() {
 		return new JdbcBasketRepository(dataSource);
 	}
-	
-	@Bean
-	public HiddenHttpMethodFilter hiddenHttpMethodFilter(){
-		return new HiddenHttpMethodFilter();
-	}
 }
 

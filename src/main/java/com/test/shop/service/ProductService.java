@@ -13,7 +13,6 @@ public class ProductService {
 		this.productRepository = productRepository;
 	}
 	
-	//레퍼지토리에서 가져온 함수를 바로 return해주는데 이게 의미가 있나?? => service를 안거치고 controller에서 바로 사용하면 안되나?
 	public List<Product> searchOne(String name) { 
 		return productRepository.searchProductByName(name);
 	}
@@ -24,5 +23,19 @@ public class ProductService {
 	
 	public List<Product> searchAll() {
 		return productRepository.searchAll();
+	}
+	
+	public List<Product> selectRadioButton(String radioButton,String search) {
+		List<Product> product;
+		if(radioButton.equals("물건")) { 
+			product = searchOne(search);
+		}
+		else if(radioButton.equals("카테고리")){
+			product = searchCategory(search);
+		}
+		else {
+			product = searchAll();
+		}
+		return product;
 	}
 }
