@@ -16,7 +16,7 @@
         <tbody>
             <tr th:each="product : ${productList}">
             <td th:text="${product.memberId}"></td>
-                <td><a href = "product/bed" th:text="${product.productName}"></a></td>
+                <td href = "product/bed" th:text="${product.productName}"></td>
                 <td> <input type="checkbox" name="basket" th:value = "${product.productName}"></td>
             </tr>
         </tbody>

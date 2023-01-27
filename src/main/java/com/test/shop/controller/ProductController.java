@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,5 +31,16 @@ public class ProductController {
 		List<Product> product = productservice.selectRadioButton(radioButton, search);
 		model.addAttribute("productList", product);
 		return "displayProduct";
+	}
+	
+	@PostMapping("product/{name}")
+	public String productSubmain(@PathVariable("name") String name, @RequestParam("product") Product product) {
+		name = product.getProductId();
+		return "name: " + name;
+	}
+	
+	@GetMapping("product/{name}")
+	public void productSubMain() {
+
 	}
 }
