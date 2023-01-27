@@ -15,13 +15,13 @@ public class BasketService {
 		this.memberRepository = memberRepository;
 	}
 	
-	public void insertBasket(List<String> productName) {
-		Basket basket = new Basket();
+	public Basket insertBasket(List<String> productName,Basket basket) {
 		for(int i = 0;i<productName.size();i++) {
 			basket.setProductName(productName.get(i));
 			basket.setMemberId(memberRepository.getLoginId());
 			basketRepository.insertBasket(basket);
 		}
+		return basket;
 	}
 	
 	public List<Basket> findMyBasket(){

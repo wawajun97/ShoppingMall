@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="displayProduct" method = "post">
+<form  action = "displayProduct" method = "post">
     <table border="1">
         <thead>
             <tr>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             <tr th:each="product : ${productList}">
-                <td><a href = "product/{name}" th:text="${product.productName}"></a></td>
+                <td><a th:href = "@{product/{name}(name = ${product.productId})}" th:text="${product.productName}"></a></td>
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.category}"></td>
                 <td> <input type="checkbox" name="basket" th:value = "${product.productName}"></td>
