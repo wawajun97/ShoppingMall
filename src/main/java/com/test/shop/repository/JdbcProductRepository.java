@@ -20,7 +20,7 @@ public class JdbcProductRepository implements ProductRepository {
 	}
 	
 	@Override
-	public List<Product> searchProductByName(String productName) {
+	public List<Product> searchProductByName(String productName) { //상품명 입력 안하고 검색하면 에러나서 list
 		List<Product> result = jdbcTemplate.query("select * from product where productname = ?", ProductRowMapper(), productName);
 		 return result;
 	}
