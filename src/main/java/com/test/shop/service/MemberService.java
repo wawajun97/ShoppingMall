@@ -1,5 +1,6 @@
 package com.test.shop.service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import com.test.shop.domain.Member;
@@ -19,8 +20,10 @@ public class MemberService {
 	}
 	
 	public String logIn(Member member) {
-		Optional<Member> result = memberRepository.logIn(member.getMemberId(), member.getPw());
-		if(result.equals(Optional.empty())) {
+		Member result = memberRepository.logIn(member.getMemberId(), member.getPw());
+		System.out.println(result);
+		if(result.equals("")) {
+			inValidateDuplicateMember(result);
 			return "login";
 		}
 		else {
@@ -38,4 +41,11 @@ public class MemberService {
 			throw new IllegalStateException("이미 존재하는 회원입니다.");
 			});
 		}
+
+	private void inValidateDuplicateMember(Member member) {
+		if(memberRepository.findById(member.getMemberId())
+				.isEmpty()){
+			throw new NoSuchElementException("존재하지 않는 회원입니다.");
+		};
+	}
 }
