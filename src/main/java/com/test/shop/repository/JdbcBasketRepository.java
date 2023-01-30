@@ -19,8 +19,11 @@ public class JdbcBasketRepository implements BasketRepository {
 	
 	@Override
 	public int insertBasket(Basket basket) {
-		String sql = "insert into basket (memberId, productName) values(?,?)";
-		return jdbcTemplate.update(sql, new Object[] {basket.getMemberId(),basket.getProductName()});
+		String sql = "insert into basket (memberId, productName) " +
+				     "select ?, ? from dual where not exists (select *" +
+				" from basket where memberId = ? and productName = ?)";
+		return jdbcTemplate.update(sql, new Object[] {basket.getMemberId(),basket.getProductName(),
+				                   basket.getMemberId(),basket.getProductName()});
 	}
 
 	@Override

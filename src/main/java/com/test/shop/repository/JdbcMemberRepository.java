@@ -27,10 +27,10 @@ public class JdbcMemberRepository implements MemberRepository {
 	}
 	
 	@Override
-	public Optional<Member> logIn(String id, String pw){
+	public Member logIn(String id, String pw){
 		setId(id);
-		List<Member> result = jdbcTemplate.query("select * from member where memberId = ? and pw = ?", memberRowMapper(), id, pw); 
-		return result.stream().findAny();
+		Member result = jdbcTemplate.queryForObject("select * from member where memberId = ? and pw = ?", memberRowMapper(), id, pw);
+		return result;
 	}
 	
 	@Override

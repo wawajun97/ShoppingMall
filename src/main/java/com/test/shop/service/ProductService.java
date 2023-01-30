@@ -27,7 +27,7 @@ public class ProductService {
 	
 	public List<Product> selectRadioButton(String radioButton,String search) {
 		List<Product> product;
-		if(radioButton.equals("물건")) { 
+		if(radioButton.equals("상품명")) { 
 			product = searchOne(search);
 		}
 		else if(radioButton.equals("카테고리")){
