@@ -4,7 +4,6 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.HiddenHttpMethodFilter;
 
 import com.test.shop.repository.BasketRepository;
 import com.test.shop.repository.JdbcBasketRepository;

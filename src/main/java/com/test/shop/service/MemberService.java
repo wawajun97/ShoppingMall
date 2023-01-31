@@ -1,7 +1,6 @@
 package com.test.shop.service;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import com.test.shop.domain.Member;
 import com.test.shop.repository.MemberRepository;

@@ -26,21 +26,21 @@ private final BasketService basketservice;
 	}
 	
 	@PostMapping("displayProduct")
-	public String insertBasket(@RequestParam("basket") List<String> productName) {
-		basketservice.insertBasket(productName, new Basket());
+	public String insertBasket(@RequestParam(value = "basket", defaultValue = "") List<String> productName) {
+		basketservice.insertBasket(productName, new Basket()); //장바구니에 추가
 		return "redirect:searchProduct";
 	}
 	
 	@GetMapping("myBasket")
 	public String myBasket(Model model) {
 		List<Basket> product = basketservice.findMyBasket();
-		model.addAttribute("productList",product);
+		model.addAttribute("productList",product); //장바구니 보기
 		return "myBasket";
 	}
 	
 	@PostMapping("myBasket")
-	public String deleteBasket(@RequestParam("basket") List<String> productName) {
-		basketservice.deleteProductInBasket(productName);
+	public String deleteBasket(@RequestParam(value = "basket", defaultValue = "") List<String> productName) {
+		basketservice.deleteProductInBasket(productName); //장바구니에서 삭제
 		return "redirect:searchProduct";
 	}
 }

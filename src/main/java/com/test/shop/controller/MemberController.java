@@ -1,7 +1,6 @@
 package com.test.shop.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +29,7 @@ public class MemberController {
 		member.setMemberId(id);
 		member.setPw(pw);
 
-		return memberservice.logIn(member);		
+		return memberservice.logIn(member); //로그인
 	}
 	
 	@GetMapping("signup")
@@ -44,7 +43,7 @@ public class MemberController {
 		member.setMemberId(id);
 		member.setPw(pw);
 		
-		memberservice.signUp(member);
+		memberservice.signUp(member); //회원가입
 		return "redirect:login";
 	}
 }

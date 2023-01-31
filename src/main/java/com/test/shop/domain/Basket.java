@@ -7,16 +7,13 @@ public class Basket {
 	public String getMemberId() {
 		return memberId;
 	}
-	
-	public void setMemberId(String id) {
-		this.memberId = id;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
-	
 	public String getProductName() {
 		return productName;
 	}
-	
-	public void setProductName(String name) {
-		this.productName = name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 }
