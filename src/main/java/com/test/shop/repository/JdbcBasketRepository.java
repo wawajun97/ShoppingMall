@@ -35,8 +35,8 @@ public class JdbcBasketRepository implements BasketRepository {
 	}
 	
 	@Override
-	public int deleteProductInBasket(String id, String productName) { // 장바구니에서 삭제
-		return jdbcTemplate.update("delete from basket where memberId = ? and productName = ?",  id, productName);
+	public int deleteProductInBasket(Basket basket) { // 장바구니에서 삭제
+		return jdbcTemplate.update("delete from basket where memberId = ? and productName = ?",  basket.getMemberId(),basket.getProductName());
 	}
 	
 	private RowMapper<Basket> BasketRowMapper() { //ResultSet의 결과를 객체로 변환

@@ -7,5 +7,5 @@ import com.test.shop.domain.Basket;
 public interface BasketRepository {
 	int insertBasket(Basket basket);
 	List<Basket> findBasket(String id);
-	int deleteProductInBasket(String id, String productName);
+	int deleteProductInBasket(Basket basket);
 }

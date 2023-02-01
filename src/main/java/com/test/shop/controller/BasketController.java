@@ -27,7 +27,7 @@ private final BasketService basketservice;
 	
 	@PostMapping("displayProduct")
 	public String insertBasket(@RequestParam(value = "basket", defaultValue = "") List<String> productName) {
-		basketservice.insertBasket(productName, new Basket()); //장바구니에 추가
+		basketservice.insertBasket(productName); //장바구니에 추가
 		return "redirect:searchProduct";
 	}
 	

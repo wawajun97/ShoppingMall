@@ -15,25 +15,26 @@ public class BasketService {
 		this.memberRepository = memberRepository;
 	}
 	
-	public Basket insertBasket(List<String> productName,Basket basket) {
-		for(int i = 0;i<productName.size();i++) {
-			basket.setProductName(productName.get(i));
-			basket.setMemberId(memberRepository.getLoginId());
-			basketRepository.insertBasket(basket);
-		}
-		return basket;
-	}
-	
 	public List<Basket> findMyBasket(){
 		String id = memberRepository.getLoginId();
 		return basketRepository.findBasket(id);
 	}
 	
-	public void deleteProductInBasket(List<String> productName) {
+	public Basket insertBasket(List<String> productName) {
+		return UpdateBasket(new SetInsert(basketRepository), productName);
+	}
+	
+	public Basket deleteProductInBasket(List<String> productName) {
+		return UpdateBasket(new SetDelete(basketRepository), productName);
+	}
+	
+	private Basket UpdateBasket(SetBasket setBasket, List<String> productName) {
+		Basket basket = new Basket();
 		for(int i = 0;i<productName.size();i++) {
-			String id = memberRepository.getLoginId();
-			String name = productName.get(i);
-			basketRepository.deleteProductInBasket(id, name);
+			basket.setProductName(productName.get(i));
+			basket.setMemberId(memberRepository.getLoginId());
+			setBasket.updateBasket(basket);
 		}
+		return basket;
 	}
 }
