@@ -20,13 +20,8 @@ public class MemberService {
 	
 	public String logIn(Member member) {
 		Member result = memberRepository.logIn(member.getMemberId(), member.getPw());
-		if(result.equals("")) {
-			inValidateDuplicateMember(result);
-			return "login";
-		}
-		else {
-			return "redirect:searchProduct";
-		}
+		inValidateDuplicateMember(result);
+		return "redirect:searchProduct";
 	}
 	
 	public String getLoginId() {
