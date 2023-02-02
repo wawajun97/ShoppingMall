@@ -9,14 +9,14 @@
     <table border="1">
         <thead>
             <tr>
-                <td>ID</td>
                 <td>상품명</td>
+                <td>가격</td>
             </tr>
         </thead>
         <tbody>
             <tr th:each="product : ${productList}">
-            <td th:text="${product.memberId}"></td>
-                <td th:text="${product.productName}"></td>
+            <td th:text="${product.productName}"></td>
+                <td th:text="${product.price}"></td>
                 <td> <input type="checkbox" name="basket" th:value = "${product.productName}"></td>
                	     
             </tr>

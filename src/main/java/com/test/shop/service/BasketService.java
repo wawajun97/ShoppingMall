@@ -33,6 +33,7 @@ public class BasketService {
 		for(int i = 0;i<productName.size();i++) {
 			basket.setProductName(productName.get(i));
 			basket.setMemberId(memberRepository.getLoginId());
+			basket.setPrice(basketRepository.findPrice(productName.get(i)));
 			setBasket.updateBasket(basket);
 		}
 		return basket;

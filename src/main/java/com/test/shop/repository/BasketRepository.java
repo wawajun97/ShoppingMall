@@ -8,4 +8,5 @@ public interface BasketRepository {
 	int insertBasket(Basket basket);
 	List<Basket> findBasket(String id);
 	int deleteProductInBasket(Basket basket);
+	Integer findPrice(String productName);
 }

@@ -3,7 +3,14 @@ package com.test.shop.domain;
 public class Basket {
 	private String memberId;
 	private String productName;
+	private Integer price;
 	
+	public Integer getPrice() {
+		return price;
+	}
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
 	public String getMemberId() {
 		return memberId;
 	}
