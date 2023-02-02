@@ -36,9 +36,8 @@ public class MemberService {
 		}
 
 	private void inValidateDuplicateMember(Member member) {
-		if(memberRepository.findById(member.getMemberId())
-				.isEmpty()){
+		if(member == null){
 			throw new NoSuchElementException(); //존재하지 않는 것을 가져오려고 할 때
-		};
+		}
 	}
 }
