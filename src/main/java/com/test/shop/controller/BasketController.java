@@ -34,7 +34,9 @@ private final BasketService basketservice;
 	@GetMapping("myBasket")
 	public String myBasket(Model model) {
 		List<Basket> product = basketservice.findMyBasket();
+		Integer sum = basketservice.getSum();
 		model.addAttribute("productList",product); //장바구니 보기
+		model.addAttribute("sum",sum);
 		return "myBasket";
 	}
 	
@@ -42,5 +44,15 @@ private final BasketService basketservice;
 	public String deleteBasket(@RequestParam(value = "basket", defaultValue = "") List<String> productName) {
 		basketservice.deleteProductInBasket(productName); //장바구니에서 삭제
 		return "redirect:searchProduct";
+	}
+	
+	@GetMapping("buy")
+	public String getBuy() {
+		return "buy";
+	}
+	
+	@PostMapping("buy")
+	public String postBuy() {
+		return "buy";
 	}
 }

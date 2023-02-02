@@ -9,4 +9,5 @@ public interface BasketRepository {
 	List<Basket> findBasket(String id);
 	int deleteProductInBasket(Basket basket);
 	Integer findPrice(String productName);
+	Integer getSum(String memberId);
 }

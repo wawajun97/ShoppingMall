@@ -28,6 +28,10 @@ public class BasketService {
 		return UpdateBasket(new SetDelete(basketRepository), productName);
 	}
 	
+	public Integer getSum() {
+		return basketRepository.getSum(memberRepository.getLoginId());
+	}
+	
 	private Basket UpdateBasket(SetBasket setBasket, List<String> productName) {
 		Basket basket = new Basket();
 		for(int i = 0;i<productName.size();i++) {

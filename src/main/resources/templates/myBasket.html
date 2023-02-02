@@ -18,12 +18,16 @@
             <td th:text="${product.productName}"></td>
                 <td th:text="${product.price}"></td>
                 <td> <input type="checkbox" name="basket" th:value = "${product.productName}"></td>
-               	     
             </tr>
         </tbody>
+        <td>총가격</td>
+        <td th:text="${sum}"></td>
     </table>
     <hr>
     <button id="submit">삭제</button>
+    </form>
+    <form action = "buy" method = "post">
+    <button id="submit">구매하기</button>
     </form>
 </body>
 </html>

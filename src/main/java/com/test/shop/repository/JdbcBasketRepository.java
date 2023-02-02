@@ -40,8 +40,14 @@ public class JdbcBasketRepository implements BasketRepository {
 		return jdbcTemplate.update("delete from basket where memberId = ? and productName = ?",  basket.getMemberId(),basket.getProductName());
 	}
 	
+	@Override
 	public Integer findPrice(String productName) {
 		return jdbcTemplate.queryForObject("select price from product where productName = ?", Integer.class, productName);
+	}
+	
+	@Override
+	public Integer getSum(String memberId) {
+		return jdbcTemplate.queryForObject("select sum(price) from basket where memberId = ?", Integer.class, memberId);
 	}
 	
 	private RowMapper<Basket> BasketRowMapper() { //ResultSet의 결과를 객체로 변환
@@ -50,7 +56,6 @@ public class JdbcBasketRepository implements BasketRepository {
 		basket.setMemberId(rs.getString("memberId"));
 		basket.setProductName(rs.getString("productName"));
 		basket.setPrice(rs.getInt("price"));
-
 		return basket;
 		};
 	}

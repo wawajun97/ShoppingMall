@@ -4,7 +4,14 @@ public class Basket {
 	private String memberId;
 	private String productName;
 	private Integer price;
+	private Integer sum;
 	
+	public Integer getSum() {
+		return sum;
+	}
+	public void setSum(Integer sum) {
+		this.sum = sum;
+	}
 	public Integer getPrice() {
 		return price;
 	}
